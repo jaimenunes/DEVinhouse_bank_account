@@ -59,12 +59,20 @@ li {
   list-style: none;
   cursor: pointer;
 }
-
+/* ================ Main ==================== */
 main {
   display: flex;
   justify-content: space-around;
 }
 
+
+/* ============= FORM ===================== */
+
+form{
+  width: 20vw;
+  height: 60vh;
+  background-color: var(--green-primary);
+}
 footer {
   width: 100%;
   min-height: 100px;
