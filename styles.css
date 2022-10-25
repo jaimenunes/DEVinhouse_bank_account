@@ -1,6 +1,7 @@
 :root {
   --green-primary: #68b766;
   --white: #fff;
+  --red: rgb(241, 16, 16);
 }
 
 /* =============== GLOBAL ==================== */
@@ -70,9 +71,58 @@ main {
 
 form{
   width: 20vw;
-  height: 60vh;
-  background-color: var(--green-primary);
+  height: 50vh;
+  background-color: var(--white);
+  border: 5px solid var(--green-primary);
+  border-radius: 15px;
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
+
+form div{
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+form input{
+  height: 1.5rem;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.wrong{
+  border: 1px solid var(--red);
+}
+
+.btn-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn-form input{
+  width: 25%;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.btn-form input[value="ENVIAR"]{
+  background-color: var(--green-primary);
+
+}
+
+.btn-form input[value="LIMPAR"]{
+  background-color: var(--red);
+}
+
+.btn-form input[value="ENVIAR"]:active, .btn-form input[value="LIMPAR"]:active{
+  opacity: 0.5;
+}
+/* ============== FOOTER ================= */
 footer {
   width: 100%;
   min-height: 100px;
