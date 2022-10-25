@@ -90,6 +90,7 @@ form div{
 
 form input{
   height: 1.5rem;
+  padding: 10px;
   border-radius: 5px;
   border: 1px solid black;
 }
@@ -104,22 +105,24 @@ form input{
   justify-content: space-around;
 }
 
-.btn-form input{
+.btn-form input, .btn-form button{
+  padding: 0;
   width: 25%;
   color: var(--white);
   cursor: pointer;
 }
 
-.btn-form input[value="ENVIAR"]{
+.btn-form button{
   background-color: var(--green-primary);
-
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
 .btn-form input[value="LIMPAR"]{
   background-color: var(--red);
 }
 
-.btn-form input[value="ENVIAR"]:active, .btn-form input[value="LIMPAR"]:active{
+.btn-form button:active, .btn-form input[value="LIMPAR"]:active{
   opacity: 0.5;
 }
 /* ============== FOOTER ================= */
