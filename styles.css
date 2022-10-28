@@ -117,7 +117,7 @@ form input{
   border-radius: 5px;
 }
 
-.btn-form input[value="LIMPAR"]{
+.btn-form .clean{
   background-color: var(--red);
 }
 

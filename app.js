@@ -1,10 +1,15 @@
 let lista = [];
-const form = document.getElementById("form");
+const formCadastro = document.getElementById("form");
 const footer = document.getElementById('footer')
+
+
+
 function checkConta(password, passwordVerify) {
   return password === passwordVerify;
 }
 
+// Pega os valores dos campos de inputs a partir do evento passado como parametro
+// Coloca os valores em uma variavel no formato de objeto 
 function capturarDados(event) {
   event.preventDefault();
 
@@ -27,18 +32,22 @@ function capturarDados(event) {
     conta: Math.floor(1000 + Math.random() * 9000),
     saldo: 0,
   };
-
-  createNewform(conta)
+  limpaForm(formCadastro)
+  createNewform(conta) // passa a variavel como parametro para esta função
 }
-form.addEventListener("submit", capturarDados);
 
+// Evento disparado ao clicar em enviar no formulário de cadastro
+formCadastro.addEventListener("submit", capturarDados);
 
+// Cria novos elementos e o adionam no DOM 
 function createNewform(conta){
+
   const divider = document.createElement('hr')
   const section = document.createElement('section')
   const title = document.createElement('h3')
   const form =  document.createElement('form')
   section.classList.add('center')
+  form.id="formTransacaoformTransacao"
   form.innerHTML = `
   <h3>Acesse sua conta</h3>
   <div>
@@ -59,11 +68,11 @@ function createNewform(conta){
       <input type="number" placeholder="99900">
   </div>
   <div>
-      <label for="">Senha (min. 8 caracteres) *</label>
+      <label for="">Senha</label>
       <input type="password" placeholder="" minlength="8" maxlength="12" name="password">
   </div>
   <div class="btn-form">
-      <input value="LIMPAR" id="limpar" type="button">
+      <button type="reset" class="clean" type="button">LIMPAR</button>
       <button type="submit">ENVIAR</button>
   </div>
   `
@@ -75,11 +84,34 @@ function createNewform(conta){
 
   const getOption = document.getElementById('operacao')
   const getSaldo= document.getElementById('saldo')
+  // verifica se o option selecionado é a consulta e bloquei o campo de valor se for verdadeiro
   getOption.addEventListener('change', ()=>{
-    if(getOption.value == 2){
+    if(getOption.value == 4){
       getSaldo.disabled =true
     }else{
       getSaldo.disabled =false
     }
   })
+  // dispara o evento no submit
+  form.addEventListener('submit', (event)=>{
+    event.preventDefault()
+    vericaConta(conta)
+    verificaOperacao()
+    chameOperacao()
+  })
+}
+
+function vericaConta(conta){
+  console.log(conta)
+}
+function verificaOperacao(){
+  console.log('passou operacao')
+}
+function chameOperacao(){
+  console.log('chamou')
+}
+
+function limpaForm(form){
+  const elements = Array.from(form.elements)
+  elements.filter((items)=> items.tagName == "INPUT").map((input) => input.value = '')
 }
