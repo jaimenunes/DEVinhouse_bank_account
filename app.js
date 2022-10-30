@@ -2,7 +2,11 @@ const listaContas = [];
 const formCadastro = document.getElementById("form");
 const formOperacao = document.getElementById("formTransacao");
 const entrar = document.getElementById("entrar");
-
+const resultadoOperacao = document.getElementById("resultadoOperacao");
+const contaCheck = document.getElementById("contaCheck");
+const spanResult = document.getElementById("closeResult");
+const spanForm = document.getElementById("closeForm");
+contaCheck;
 function checkConta(password, passwordVerify) {
   return password === passwordVerify;
 }
@@ -54,10 +58,6 @@ function getOperacao() {
     }
   });
 
-  const span = document.getElementsByClassName("close")[0];
-  span.onclick = function () {
-    formOperacao.style.display = "none";
-  };
   // dispara o evento no submit
   formOperacao.addEventListener("submit", efetuarOperacao);
 }
@@ -70,6 +70,12 @@ function obterConta(conta) {
 const validarConta = (conta, senha) => {
   const contaCliente = obterConta(conta);
   return contaCliente && contaCliente.senha === senha ? true : false;
+};
+
+const consultarSaldo = (conta) => {
+  const contaCliente = obterConta(conta);
+  contaCheck.style.display = "block";
+  resultadoOperacao.innerHTML = `O seu saldo atual é de: R$ ${contaCliente.saldo}`;
 };
 
 const efetuarOperacao = (evento) => {
@@ -105,3 +111,10 @@ function limpaForm(form) {
     .filter((items) => items.tagName == "INPUT")
     .map((input) => (input.value = ""));
 }
+spanForm.addEventListener("click", () => {
+  formOperacao.style.display = "none";
+});
+
+spanResult.addEventListener("click", () => {
+  contaCheck.style.display = "none";
+});
