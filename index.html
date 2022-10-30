@@ -14,26 +14,26 @@
 <body>
     <header>
         <div class="flex-logo">
-            <p>icon</p>
+            <img src="./assets/images/logo.svg" alt="">
             <h1>PIGGY BANK</h1>
         </div>
         <nav>
             <ul>
-                <li>INICIO</li>
-                <li>CONTATO</li>
+                <li>Cadastrar</li>
+                <li id="entrar">Entrar</li>
             </ul>
         </nav>
     </header>
     <main>
         <section>
-            <p>icon</p>
+            <img src="./assets/images/cash.svg" alt="">
             <p>
                 Faça parte do banco que mais cresce!!<br>
                 Entre com seus dados e crie sua conta
             </p>
         </section>
         <section>
-            <form id="form">
+            <form id="form" method="post">
                 <h3>Entre com seus dados</h3>
                 <div>
                     <label for="">Nome *</label>
@@ -46,7 +46,7 @@
                 </div>
                 <!-- 
                     pattern="^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}"
-                    pattern="[0-9]{2} [0-9]{5}-[0-9]{4}"
+                    pattern="\([0-9]{2}\) ?[0-9]{5}-?[0-9]{4}|[0-9]{11}"
                  -->
                 <div>
                     <label for="">Celular *</label>
@@ -62,6 +62,37 @@
                 </div>
                 <div class="btn-form">
                     <button type="reset" class="clean" type="button">LIMPAR</button>
+                    <button type="submit" title="rer">ENVIAR</button>
+                </div>
+            </form>
+        </section>
+        <section class="modal" id="formTransacao">
+            <form class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Acesse sua conta</h3>
+                <div>
+                    <label for="">Operação *</label>
+                    <select id="operacao" name="select">
+                        <option value='1' disabled>Escolha uma operação</option>
+                        <option value='2'>Saque</option>
+                        <option value='3'>Depósito</option>
+                        <option value='4'>Consulta saldo</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Valor</label>
+                    <input type="number" placeholder="a partir de R$ 10" min="10" name='valor' id='saldo'>
+                </div>
+                <div>
+                    <label for="">Conta *</label>
+                    <input type="number" placeholder="99900" name="conta">
+                </div>
+                <div>
+                    <label for="">Senha</label>
+                    <input type="password" placeholder="" minlength="8" maxlength="12" name="senha">
+                </div>
+                <div class="btn-form">
+                    <button type="reset" class="clean" type="button">LIMPAR</button>
                     <button type="submit">ENVIAR</button>
                 </div>
             </form>
@@ -74,7 +105,7 @@
         </div>
         <div class="footer-font">
             <p>
-                Piggy bank your digital bank, because the innovation matters
+                Piggy bank your digital bank, because the security matters
             </p>
         </div>
         <div>
