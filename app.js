@@ -1,4 +1,4 @@
-const listaContas = [];
+let listaContas = [];
 const formCadastro = document.getElementById("form");
 const formOperacao = document.getElementById("formTransacao");
 const entrar = document.getElementById("entrar");
@@ -37,6 +37,7 @@ function capturarDados(event) {
   };
   listaContas.push(conta);
   alert(`Conta criada com sucesso, o número da sua conta é: ${conta.conta}`);
+  console.log(listaContas);
   limpaForm(formCadastro);
   getOperacao(conta); // passa a variavel como parametro para esta função
 }
@@ -78,6 +79,25 @@ const consultarSaldo = (conta) => {
   resultadoOperacao.innerHTML = `O seu saldo atual é de: R$ ${contaCliente.saldo}`;
 };
 
+const depositar = (conta, valor) => {
+  if (validarValor(valor)) {
+    const contaCliente = { ...obterConta(conta) };
+    contaCliente.saldo += valor;
+
+    const contasAtualizadas = listaContas.filter((c) => c.conta !== conta);
+    contasAtualizadas.push(contaCliente);
+    listaContas = contasAtualizadas;
+    contaCheck.style.display = "block";
+    resultadoOperacao.innerHTML = `O seu saldo atual é de: R$ ${contaCliente.saldo}`;
+  } else {
+    alert("Valor informado incorretamente");
+  }
+};
+
+const validarValor = (valor) => {
+  return !isNaN(valor) && valor > 0;
+};
+
 const efetuarOperacao = (evento) => {
   evento.preventDefault();
   const conta = parseInt(evento.target.conta.value);
@@ -89,7 +109,7 @@ const efetuarOperacao = (evento) => {
     console.log(evento.target.operacao.value);
     switch (evento.target.operacao.value) {
       case "2":
-        sacar(conta, valor);
+        // sacar(conta, valor);
         break;
       case "3":
         depositar(conta, valor);

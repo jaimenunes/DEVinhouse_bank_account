@@ -28,11 +28,13 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  background-image: url(./assets/images/header.png);
+  min-height: 250px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  align-items: baseline;
   padding: 0 5rem;
   width: 100%;
-  min-height: 150px;
-  background-color: var(--green-primary);
 }
 
 .flex-logo {
@@ -43,6 +45,7 @@ header {
   align-items: center;
   color: var(--white);
   font-weight: bold;
+  margin-top: 1rem;
 }
 
 nav {
@@ -53,6 +56,7 @@ nav ul {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  font-weight: 900;
 }
 li {
   color: var(--white);
@@ -141,11 +145,12 @@ footer {
 footer div {
   display: flex;
   justify-content: center;
+  align-items: center;
   color: var(--white);
 }
 
-footer div i {
-  margin-right: 10px;
+footer div img {
+  margin-right: 0.8rem;
 }
 
 .footer-font {
