@@ -77,6 +77,7 @@ const consultarSaldo = (conta) => {
   const contaCliente = obterConta(conta);
   contaCheck.style.display = "block";
   resultadoOperacao.innerHTML = `O seu saldo atual é de: R$ ${contaCliente.saldo}`;
+  return contaCliente.saldo;
 };
 
 const depositar = (conta, valor) => {
@@ -88,9 +89,30 @@ const depositar = (conta, valor) => {
     contasAtualizadas.push(contaCliente);
     listaContas = contasAtualizadas;
     contaCheck.style.display = "block";
-    resultadoOperacao.innerHTML = `O seu saldo atual é de: R$ ${contaCliente.saldo}`;
+    resultadoOperacao.innerHTML = `Operação realizada com sucesso! Saldo atual é de: R$ ${contaCliente.saldo}`;
   } else {
     alert("Valor informado incorretamente");
+  }
+};
+
+const sacar = (conta, valor) => {
+  if (!validarValor(valor)) {
+    alert("Valor informado incorretamente");
+    return;
+  }
+  if (consultarSaldo(conta) < valor) {
+    contaCheck.style.display = "block";
+    resultadoOperacao.innerHTML = `Saldo insuficiente`;
+    return;
+  } else {
+    const contaCliente = { ...obterConta(conta) };
+    contaCliente.saldo -= valor;
+
+    const contasAtualizadas = listaContas.filter((c) => c.conta !== conta);
+    contasAtualizadas.push(contaCliente);
+    listaContas = contasAtualizadas;
+    contaCheck.style.display = "block";
+    resultadoOperacao.innerHTML = `Operação realizada com sucesso! Saldo atual é de: R$ ${contaCliente.saldo}`;
   }
 };
 
@@ -109,7 +131,7 @@ const efetuarOperacao = (evento) => {
     console.log(evento.target.operacao.value);
     switch (evento.target.operacao.value) {
       case "2":
-        // sacar(conta, valor);
+        sacar(conta, valor);
         break;
       case "3":
         depositar(conta, valor);
@@ -138,3 +160,12 @@ spanForm.addEventListener("click", () => {
 spanResult.addEventListener("click", () => {
   contaCheck.style.display = "none";
 });
+
+window.onclick = function (event) {
+  if (event.target == contaCheck) {
+    contaCheck.style.display = "none";
+  }
+  if (event.target == formOperacao) {
+    formOperacao.style.display = "none";
+  }
+};
