@@ -3,7 +3,7 @@
 
 <h3>Descrição</h3>
 
-<p>Este repositório é referente ao primeiro projeto do módulo 1 (front-end) do curso DEVinhouse turma Philips, o objetivo era criar uma interface que permitia relaizar o cadastro de um cliente através de um formulário e realizar operações bancárias</p>
+<p>Este repositório é referente aos exercícios da semana 4 do módulo 1 (front-end) do curso DEVinhouse turma Philips, o objetivo era criar uma interface que permitia relaizar o cadastro de um cliente através de um formulário e realizar operações bancárias</p>
 
 <h3>Funcionalidades:</h3>
 <ul>
