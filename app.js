@@ -37,7 +37,6 @@ function capturarDados(event) {
   };
   listaContas.push(conta);
   alert(`Conta criada com sucesso, o número da sua conta é: ${conta.conta}`);
-  console.log(listaContas);
   limpaForm(formCadastro);
   getOperacao(conta); // passa a variavel como parametro para esta função
 }
@@ -128,7 +127,6 @@ const efetuarOperacao = (evento) => {
   const contaValida = validarConta(conta, senha);
 
   if (contaValida) {
-    console.log(evento.target.operacao.value);
     switch (evento.target.operacao.value) {
       case "2":
         sacar(conta, valor);
